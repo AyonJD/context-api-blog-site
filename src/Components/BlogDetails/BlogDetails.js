@@ -1,15 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { BlogContext } from "../../App";
+import React, { useContext } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { BlogDataContext } from "../../App";
 import "./BlogDetails.css";
 import { BsChevronLeft } from "react-icons/bs";
 
 const BlogDetails = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
-  const [blogs] = useContext(BlogContext);
-
-  const blog = blogs.find((blog) => blog._id == id);
+  const navigate = useNavigate()
+  const [blogsData, setBlogsData] = useContext(BlogDataContext);
+  const singleBlog = blogsData.find(blog => blog._id === id);
 
   return (
     <>
@@ -21,10 +20,10 @@ const BlogDetails = () => {
         </button>
         <div className='blog-details'>
           <div className='blog-image'>
-            <img src={blog?.imageURL} alt='' />
+            <img src={singleBlog?.imageURL} alt='' />
           </div>
-          <h1>{blog?.title}</h1>
-          <p>{blog?.blog}</p>
+          <h1>{singleBlog?.title}</h1>
+          <p>{singleBlog?.blog}</p>
         </div>
       </div>
     </>

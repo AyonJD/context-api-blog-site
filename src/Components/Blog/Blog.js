@@ -4,8 +4,8 @@ import Indicator from "../../Assets/Image/indicator.svg";
 import { useNavigate } from "react-router-dom";
 
 const Blog = ({ blog }) => {
-  const navigate = useNavigate();
   const { imageURL, title, blog: blogBody, admin, _id } = blog;
+  const navigate = useNavigate()
   return (
     <div className='blog-container'>
       <div className='blog-image-container'>
